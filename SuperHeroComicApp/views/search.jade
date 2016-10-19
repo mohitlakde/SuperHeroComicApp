@@ -1,0 +1,49 @@
+extends master
+
+block content
+  .container
+   font(color='red')
+    h2.v-center
+    p.lead ///Search a Characters by Name Here
+
+     .row(ng-controller="heroController")
+      form.col-md-5
+        .input-group
+          input.form-control.input-md(type="text", ng-model="name")
+          span.input-group-btn
+            button.btn.btn-md.btn-warning.pull-right(type="submit", ng-click="searchSuperHero()") search
+        p(ng-show="heroes.length == 0")
+          i.yellow * no such Character found
+        
+        div.more-results-block(ng-show="heroes.length > 0")
+          p
+           Searched Character is 
+           b 
+            u
+             {{hero.name}}
+          p  
+            i.span Click any Character below to see details
+            hr
+          div(ng-repeat="alt in heroes")
+            p
+              h5
+               a(href="#",ng-click="otherheroes(alt)") 
+                font(color='red') 
+                 b --> {{alt.name}}
+               
+       .col-md-6.hero-block(ng-show="hero")
+          p
+            h2 
+             font(color='white')
+              b 
+               u
+                {{hero.name}}
+            p  
+            b 
+             font(color='white')
+              {{hero.deck}}
+              a.btn.btn-warning(style="width: 100%; margin-top: 10px",href="details?{{hero.api_detail_url}}") Details   
+       
+       .col-md-6.hero-block(ng-show="hero")                        
+          img(src="{{hero.image.small_url}}",width="550",height="350")
+           

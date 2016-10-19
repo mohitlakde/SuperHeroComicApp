@@ -1,0 +1,48 @@
+extends master
+
+block content
+  .container(ng-controller="heroDetailController")
+   h2 
+    font(color='white')
+     b {{hero.name}}
+   p 
+    font(color='white')
+     b Origin:{{hero.origin.name}}
+   p 
+    font(color='white')
+     b Publisher:{{hero.publisher.name}}
+    
+    
+    
+    form.col-md-5 
+     p
+      font(color='white')
+       b {{hero.deck}}
+     .col-md-2
+       img(border="2" src="{{hero.image.small_url}}",width="430",height="350")
+    .col-md-6    
+     .col-md-12.hero-block(ng-show="hero")
+        p
+         button.btn.btn-warning(style="width: 100%",ng-click="togglePowers()"){{ powersBtnText || 'Powers'}} 
+         ul(ng-show="displayPowers")
+          li.resultList(ng-repeat="power in powers")
+           span {{ power.name }}
+        p
+         button.btn.btn-warning(style="width: 100%",ng-click="toggleFriends()"){{ friendsBtnText || 'Friends'}} 
+         ul(ng-show="displayFriends")
+          li.resultList(ng-repeat="friend in friends")
+           a(href="details?{{friend.api_detail_url}}"){{ friend.name }}
+          
+        p
+         button.btn.btn-warning(style="width: 100%",ng-click="toggleEnemies()"){{ enemiesBtnText || 'Enemies'}} 
+         ul(ng-show="displayEnemies")
+          li.resultList(ng-repeat="enemy in enemies")
+           a.btn.btn-warning.btn-xs(style="width: 10%", href="hero/{{hero.id}}/versus/{{enemy.id}}") Vs
+           
+           a(href="details?{{enemy.api_detail_url}}"){{ enemy.name }}
+       
+
+     
+       
+    
+

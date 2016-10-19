@@ -1,0 +1,162 @@
+extends master
+
+block content
+  .container(ng-controller="heroVersusController")
+    .row
+      .col-md-4
+       font(color='white') 
+        {{main_hero.results.name}}
+        p.lead Origin//{{main_hero.results.origin.name}}
+        p.lead Publisher//{{main_hero.results.publisher.name}}
+        {{main_hero.results.deck}}
+        
+              
+      .col-md-2
+        img(src="{{main_hero.results.image.small_url}}",width="150",height="200")
+   
+      .col-md-2
+        img(src="{{villian.results.image.small_url}}",width="150",height="200") 
+
+      .col-md-4 
+       font(color='white')
+        {{villian.results.name}}
+        p.lead Origin//{{villian.results.origin.name}}
+        p.lead Publisher//{{villian.results.publisher.name}}
+        {{villian.results.deck}}
+        
+    .row
+      .col-md-4
+       a.btn.btn-warning(style="width: 100%; margin-top: 10px", href="details?{{main_hero.results.api_detail_url}}") Details
+       
+      .col-md-2
+      .col-md-2
+      
+      .col-md-4
+       a.btn.btn-warning(style="width: 100%; margin-top: 10px", href="details?{{main_hero.results.api_detail_url}}") Details
+    
+    .row
+      .col-md-4
+       p
+       font(color='white') 
+        u
+         b 
+         # of Teams : {{main_hero.results.teams.length}}
+         div
+          ul(ng-repeat="team in main_hero.results.teams")
+           font(color='light salmon')
+             b {{team.name}}
+      .col-md-2
+      .col-md-2
+      
+      .col-md-4
+       p
+       font(color='white') 
+        u
+         b 
+         # of Teams : {{villian.results.teams.length}}
+         div
+          ul(ng-repeat="team in villian.results.teams")
+           font(color='light salmon')
+             b {{team.name}}
+        
+    .row
+      .col-md-4
+       p
+       font(color='white') 
+        u
+         b 
+         # of Powers : {{main_hero.results.powers.length}}
+         div
+          ul(ng-repeat="pow in main_hero.results.powers")
+           font(color='light salmon')
+             b {{pow.name}}
+      .col-md-2
+      .col-md-2
+      
+      .col-md-4
+       p
+       font(color='white') 
+        u
+         b 
+         # of Powers : {{villian.results.powers.length}}
+         div
+          ul(ng-repeat="pow in villian.results.powers")
+           font(color='light salmon')
+             b {{pow.name}} 
+             
+    .row
+      .col-md-4
+       p
+       font(color='white') 
+        u
+         b 
+         # of Friends : {{main_hero.results.character_friends.length}}
+         div
+          ul(ng-repeat="fri in main_hero.results.character_friends")
+           font(color='light salmon')
+            b  
+             a( style="light salmon" href="details?{{fri.api_detail_url}}"){{fri.name}}
+      .col-md-2
+      .col-md-2
+      
+      .col-md-4
+       p
+       font(color='white') 
+        u
+         b 
+         # of Friends : {{villian.results.character_friends.length}}
+         div
+          ul(ng-repeat="fri in villian.results.character_friends")
+           font(color='light salmon')
+             b 
+              a(href="details?{{fri.api_detail_url}}"){{fri.name}}     
+     
+    .row
+      .col-md-4
+       p
+       font(color='white') 
+        u
+         b 
+         # of Enemies : {{main_hero.results.character_enemies.length}}
+         div
+          ul(ng-repeat="ene in main_hero.results.character_enemies")
+           font(color='light salmon')
+             b 
+             a(href="details?{{ene.api_detail_url}}"){{ene.name}}
+      .col-md-2
+      .col-md-2
+      
+      .col-md-4
+       p
+       font(color='white') 
+        u
+         b 
+         # of Enemies : {{villian.results.character_enemies.length}}
+         div
+          ul(ng-repeat="ene in villian.results.character_enemies")
+           font(color='light salmon')
+             b 
+             a(href="details?{{ene.api_detail_url}}"){{ene.name}} 
+             
+    .row
+                    
+      
+      
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
